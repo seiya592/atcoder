@@ -21,7 +21,7 @@
 # if tmpX in lst:
 #     print('Yes')
 
-#解説デバッグ
+# 解説デバッグ
 n, x = map(int, input().split())
 dp = 1
 for _ in range(n):
