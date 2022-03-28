@@ -26,3 +26,11 @@ N頂点 N-1の辺 で連結なグラフは木構造
 https://torus711.hatenablog.com/entry/20150423/1429794075
 abc007-d
 Typical_DP-E
+
+★多項式の演算
+pynum.poly1d()　を使う
+https://python.atelierkobato.com/poly1d/
+ABC 245 D
+
+
+★辞書順最小は前から貪欲法

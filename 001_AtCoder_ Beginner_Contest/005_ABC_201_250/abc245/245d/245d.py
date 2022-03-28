@@ -5,20 +5,15 @@ def IIS(): return map(int, input().split())
 def LIIS(): return list(map(int, input().split()))
 import sys
 sys.setrecursionlimit(10000000)
+import numpy as np
 
+N, M = IIS()
+A = LIIS()
+C = LIIS()
 
-# N, M = IIS()
-# A = LIIS()
-# C = LIIS()
-#
-# B = [1000] * (M + 1)
-# B[0] = C[0] // A[0]
-#
-# # for i in range(1, N + M + 1):
-# #     tmp = C[i]
-# #     for j, a in enumerate(A):
-# #         if i >= j and  and i - j <= M:
-# #             tmp -= a * B[i-j]
-# #     B[i] = tmp
-#
-# for i in range(M+1):
+A_poly = np.poly1d(A[::-1])     # 最高次の項が0番目
+C_poly = np.poly1d(C[::-1])
+
+B_poly = C_poly / A_poly
+ans = B_poly[0].coef[::-1]   # 商の0次項から出力  B_poly[0]→商　B_poly[1]→余
+print(' '.join(list(map(lambda x: str(int(x)), ans))))          # float→int→str
