@@ -1,6 +1,9 @@
 # 使用例
 # https://atcoder.jp/contests/typical90/submissions/30532657
 
+# 参考
+# https://drken1215.hatenablog.com/entry/2021/10/10/195200
+
 import string
 class CALC_NEXT:
     """
