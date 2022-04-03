@@ -98,29 +98,28 @@ class UnionFind():
         return '\n'.join(f'{r}: {m}' for r, m in self.all_group_members().items())
 
 # 解説AC
-# https://atcoder.jp/contests/abc049/tasks/arc065_b
 
-N, K, L = LIIS()
-PQ = [LIIS() for _ in range(K)]
-RS = [LIIS() for _ in range(L)]
+N, M, K = LIIS()
+uf = UnionFind(N+1)
+friend = [[] for i in range(N+1)]
+for _ in range(M):
+    a, b = IIS()
+    uf.union(a, b)
+    friend[a].append(b)
+    friend[b].append(a)
 
-uf_pq = UnionFind(N+1)
-uf_rs = UnionFind(N+1)
-
-for p, q in PQ:
-    uf_pq.union(p, q)
-
-for r, s in RS:
-    uf_rs.union(r, s)
-
-d = defaultdict(int)
-for i in range(1, N+1):
-    tmp = (uf_rs.find(i), uf_pq.find(i))    #tuple
-    d[tmp] += 1       # 同じ根を持つ組み合わせを数える
-                      # 都市i と都市j が道路でも線路でも連結していた場合 道路と線路の根の組み合わせは一緒になる
+block = [LIIS() for _ in range(K)]
 
 ans = []
-for i in range(1, N+1):
-    ans.append(str(d[(uf_rs.find(i), uf_pq.find(i))]))
+ans.append(-1)  #頂点０は存在しない
+# (連結成分の数-(1自分自身)) - 自分から出ているfriend辺の数 - 同じ連結成分のblockの数
+for i in range(1,N+1):
+    # ans =  (連結成分の数-(1自分自身)) - 自分から出ているfriend辺の数
+    ans.append((uf.size(i) - 1) - len(friend[i]))
 
-print(' '.join(ans))
+for c, d in block:
+    if uf.same(c, d):   # もし同じ連結成分内でblockされていたら
+        ans[c] -= 1
+        ans[d] -= 1
+
+print(' '.join(map(str, ans[1:])))

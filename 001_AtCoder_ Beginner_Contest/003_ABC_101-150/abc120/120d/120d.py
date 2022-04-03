@@ -98,29 +98,27 @@ class UnionFind():
         return '\n'.join(f'{r}: {m}' for r, m in self.all_group_members().items())
 
 # 解説AC
-# https://atcoder.jp/contests/abc049/tasks/arc065_b
 
-N, K, L = LIIS()
-PQ = [LIIS() for _ in range(K)]
-RS = [LIIS() for _ in range(L)]
-
-uf_pq = UnionFind(N+1)
-uf_rs = UnionFind(N+1)
-
-for p, q in PQ:
-    uf_pq.union(p, q)
-
-for r, s in RS:
-    uf_rs.union(r, s)
-
-d = defaultdict(int)
-for i in range(1, N+1):
-    tmp = (uf_rs.find(i), uf_pq.find(i))    #tuple
-    d[tmp] += 1       # 同じ根を持つ組み合わせを数える
-                      # 都市i と都市j が道路でも線路でも連結していた場合 道路と線路の根の組み合わせは一緒になる
+N, M = IIS()
+E = [LIIS() for _ in range(M)]
 
 ans = []
-for i in range(1, N+1):
-    ans.append(str(d[(uf_rs.find(i), uf_pq.find(i))]))
+ans.append(N * (N-1) // 2)
+uf = UnionFind(N+1)
 
-print(' '.join(ans))
+# 切り離す動作はできないので逆からつなぐことを考える
+for a, b in reversed(E[1:]):
+    f = uf.same(a, b)   # すでにつながっているか確認
+    if f:
+        #すでにつながっている場合何も起きない
+        ans.append(ans[-1])
+    else:
+        # 現状の頂点の数を数える
+        a_num = uf.size(a)
+        b_num = uf.size(b)
+
+        ans.append(ans[-1] - (a_num * b_num))   # a-bの橋がつながるとお互いの頂点の数の組み合わせ分の不便さが消える
+        uf.union(a, b)  # 計算が終わったら橋を繋げる
+
+for a in reversed(ans):
+    print(a)
