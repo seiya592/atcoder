@@ -1,29 +1,30 @@
-# https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B&lang=jp
-class RangeSumQuery():
+# https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_E
+class RangeAddQuery():
     """
-    一点更新　区間取得
+    区間更新　一点取得
     """
 
     def __init__(self, length, default=0):
         self.SEG_LEN = 2 ** length.bit_length()
         self.seg = [default] * (self.SEG_LEN * 2)
 
-    def add(self,index,value):
+    def get(self, index):
         """
-        一点加算
+        一点取得
         seg木のindexの要素にvalueを追加する
         :param index: 要素番号
         :param value: 値
         """
         index += self.SEG_LEN
-        self.seg[index] += value
+        ret = self.seg[index]
         while True:
             index //= 2
             if index == 0:
                 break
-            self.seg[index] = self.seg[index * 2] + self.seg[index * 2 + 1]
+            ret += self.seg[index]
+        return ret
 
-    def get_sum(self, left, right):
+    def add(self, left, right, value):
         """
         区間和
         seg木の[left:right)の要素の合計を返す
@@ -33,14 +34,12 @@ class RangeSumQuery():
         """
         left += self.SEG_LEN
         right += self.SEG_LEN
-        ret = 0
         while left < right:
             if left % 2 == 1:
-                ret += self.seg[left]
+                self.seg[left] += value
                 left += 1
             if right % 2 == 1:
-                ret += self.seg[right - 1]
+                self.seg[right - 1] += value
                 right -= 1
             left //= 2
             right //= 2
-        return ret
