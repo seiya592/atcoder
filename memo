@@ -49,3 +49,8 @@ https://qiita.com/drken/items/56a6b68edef8fc605821
 スタート地点だけでなくゴール地点も求めると見つかる解法も
 典型013
 
+
+★有向グラフでお互いに行き来できる頂点のグループ分けをするときは強連結成分分解をする
+典型021
+# https://hkawabata.github.io/technical-note/note/Algorithm/graph/scc.html
+lib StronglyConnectedComponent.py
