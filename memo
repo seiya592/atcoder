@@ -54,3 +54,7 @@ https://qiita.com/drken/items/56a6b68edef8fc605821
 典型021
 # https://hkawabata.github.io/technical-note/note/Algorithm/graph/scc.html
 lib StronglyConnectedComponent.py
+
+★1~Nまでの約数の数を求める
+# https://maspypy.com/atcoder-%e5%8f%82%e5%8a%a0%e6%84%9f%e6%83%b3-2020-06-27abc-172#toc4
+abc172d
