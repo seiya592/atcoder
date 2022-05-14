@@ -5,6 +5,6 @@ def IIS(): return map(int, input().split())
 def LIIS(): return list(map(int, input().split()))
 def LLIIS(n): return [LIIS() for _ in range(n)]
 import sys
-sys.setrecursionlimit(10000000)
+sys.setrecursionlimit(100000)
 
 
