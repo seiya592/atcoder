@@ -9,7 +9,7 @@ sys.setrecursionlimit(10000000)
 import heapq
 
 N, M = IIS()
-V = [[] for _ in range(M)]
+V = [[] for _ in range(N)]
 for _ in range(M):
     u,v,c = IIS()
     V[u].append([c,v])
