@@ -1,10 +1,5 @@
-def I(): return input().rstrip()
-def IS(): return input().split()
-def II(): return int(input())
-def IIS(): return map(int, input().split())
-def LIIS(): return list(map(int, input().split()))
-import sys
-sys.setrecursionlimit(10000000)
+# https://juppy.hatenablog.com/entry/2020/09/03/%E9%A0%86%E5%BA%8F%E4%BB%98%E3%81%8D%E9%9B%86%E5%90%88%E3%82%82%E3%81%A9%E3%81%8D_Python_1
+
 import bisect
 
 
@@ -84,44 +79,47 @@ class OrderBIT:
     def find_higher(self, x):
         return self.find_kth_val(self.count_lower(x))
 
-N,M = IIS()
-A = LIIS()
-B = LIIS()
-C = LIIS()
-D = LIIS()
+"""
+使い方
+　　
+初期化 O(NlogN)
+・最終的に一度でも入る可能性のある値の配列 A
+・A がsortされているならsort_flag = True
 
-CHOCO = []
-BOX = []
-for a,b in zip(A,B):
-    CHOCO.append((a,b))
+T = OrderBIT(A)
 
-for c,d in zip(C,D):
-    BOX.append((c,d))
 
-CHOCO.sort(key=lambda x:-x[0])
-BOX.sort(key=lambda x:-x[0])
 
-T = OrderBIT(D)
 
-i = 0 #チョコ
-j = 0 #ボックス
-while True:
-    if i == N:
-        print('Yes')
-        exit()
+　
+値の追加・削除 O(logN)
+・値 x を c 個追加or削除する
 
-    c_size = CHOCO[i][0]
+T.insert_val(x,c)
+T.delete_val(x,c)
+　
 
-    while j < M and c_size <= BOX[j][0]:
-        T.insert_val(BOX[j][1])
-        j+=1
 
-    # 縦だけみてチョコが入る箱をTに貯めた。　そこから横の長さで一番効率のいい箱を見つける
-    t = T.find_higher(CHOCO[i][1] -1)
-    if t == -10**9:
-        print('No')
-        exit()
 
-    T.delete_val(t)
-    i += 1
+k番目に小さい値を返す O(logN)
+・kを0-indexed(0,1,2,...)
+・k が全体の長さを超えている場合 MINIMUM VAL -10**9 を返す
 
+T.find_kth_val(k)
+　
+
+
+
+値がx以下の個数を返す O(logN)
+
+T.count_lower(x)
+　
+
+
+
+xより大きい中で最も小さい値を返す O(logN)
+・存在いない場合 MINIMUM VAL -10**9 を返す
+
+T.find_higher(x)
+
+"""
