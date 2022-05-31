@@ -58,3 +58,10 @@ lib StronglyConnectedComponent.py
 ★1~Nまでの約数の数を求める
 # https://maspypy.com/atcoder-%e5%8f%82%e5%8a%a0%e6%84%9f%e6%83%b3-2020-06-27abc-172#toc4
 abc172d
+
+★順列全探索
+典型032
+N個の並び順すべてを確かめたい場合
+itertools.permutations(range(N))
+O（N！）　N=10までなら耐えれる 11は怪しそう
+それ以上の場合はBitDPでもよさそう→典型032でBitDPしてる
