@@ -1,13 +1,13 @@
 
 
-def has_bit(n,i):
+def has_bit(n, i) -> bool:
     """
     nで表現される集合に要素iが含まれているかを判定
-    :param n:int 集合
-    :param i:int 要素
+    :param int n: 集合
+    :param int i: 要素
     :return:bool True→含まれている False→含まれていない
     """
-    return (n & (1<<i) > 0)
+    return (n & (1 << i)) > 0
 
 # https://qiita.com/zawawahoge/items/8bbd4c2319e7f7746266
 def popcount(x):
