@@ -14,3 +14,5 @@ def Arithmetic_progression(a,d,n):
     :return:等差数列の和
     """
     return n * (a+(n*d)) // 2
+
+print(Arithmetic_progression(1,1,4))

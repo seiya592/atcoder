@@ -11,3 +11,5 @@ sys.setrecursionlimit(500000)
 INF = 10**10
 
 
+N = II()
+print(2**N)
