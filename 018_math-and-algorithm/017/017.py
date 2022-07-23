@@ -12,4 +12,18 @@ import sys
 sys.setrecursionlimit(500000)
 INF = 10**10
 
+N = II()
+A = LIIS()
 
+def calc(x,y):
+    while x and y:
+        if x < y:
+            y %= x
+        else:
+            x %= y
+    return max(x,y)
+
+ans = 1
+for a in A:
+    ans = ans*a // calc(ans, a)
+print(ans)

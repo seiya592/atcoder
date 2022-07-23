@@ -13,3 +13,21 @@ sys.setrecursionlimit(500000)
 INF = 10**10
 
 
+N, X, Y = IIS()
+
+
+def dfs(level, red, blue):
+
+    if level == 1:
+        print(blue)
+        exit()
+
+    lowred = red
+    nowblue = red * X + blue
+
+    lowred += nowblue
+    lowblue = nowblue * Y
+
+    dfs(level-1, lowred, lowblue)
+
+dfs(N,1,0)

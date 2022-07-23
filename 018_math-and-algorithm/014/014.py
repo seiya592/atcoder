@@ -13,3 +13,16 @@ sys.setrecursionlimit(500000)
 INF = 10**10
 
 
+N = II()
+ans = []
+i = 2
+t = N
+while i * i <= N:
+    if t % i == 0:
+        ans.append(i)
+        t //= i
+    else:
+        i += 1
+if t != 1:
+    ans.append(t)
+print(*ans)

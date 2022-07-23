@@ -13,6 +13,7 @@ def Arithmetic_progression(a,d,n):
     :param n:項数
     :return:等差数列の和
     """
-    return n * (a+(n*d)) // 2
+    # return n * (a+(n*d)) // 2
+    return n * (2*a+((n-1)*d)) // 2
 
 print(Arithmetic_progression(1,1,4))

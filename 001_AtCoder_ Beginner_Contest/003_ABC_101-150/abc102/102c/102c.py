@@ -13,3 +13,18 @@ sys.setrecursionlimit(500000)
 INF = 10**10
 
 
+N = II()
+A = LIIS()
+
+AA = []
+for i, a in enumerate(A,start=1):
+    AA.append(a-i)
+AA.sort()
+b = AA[N//2]
+# b = A[N//2] - (N // 2 + 1)
+
+ans = 0
+for i, a in enumerate(A, start=1):
+    ans += abs(a - (b+i))
+
+print(ans)

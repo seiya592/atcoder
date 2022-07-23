@@ -13,3 +13,11 @@ sys.setrecursionlimit(500000)
 INF = 10**10
 
 
+N = II()
+A = LLIIS(N)
+
+ans = 1
+for a in A:
+    ans *= sum(a)
+    ans %= 10**9+7
+print(ans)

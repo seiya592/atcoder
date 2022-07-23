@@ -4,9 +4,9 @@ import math
 def my_lcm(numbers):
     """
     O(N log (max(*numbers)))
-    リスト内のすべての要素の最小公倍数を求める
+    リスト内のすべての要素の最大公約数を求める
     :param numbers:
-    :return:numbersの要素の中の最小公倍数
+    :return:numbersの要素の中の最大公約数
     """
 
     def my_lcm_base(x, y):

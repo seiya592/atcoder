@@ -11,5 +11,23 @@ def NO(): print('No'), exit()
 import sys
 sys.setrecursionlimit(500000)
 INF = 10**10
+import math
 
+#挟み込み累積和?
 
+N = II()
+A = LIIS()
+
+left = [0] * (N+2)
+right = [0] * (N+2)
+
+for i in range(N):
+    left[i+1] = math.gcd(left[i], A[i])
+
+for i in reversed(range(N)):
+    right[i+1] = math.gcd(right[i+2], A[i])
+
+ans = 0
+for i in range(N):
+    ans = max(ans, math.gcd(left[i], right[i+2]))
+print(ans)

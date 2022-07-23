@@ -10,3 +10,5 @@ def div_count(N):
         for a in range(n, N+1, n):  #a = nからnステップ毎の値 →　div[a]約数にnが含まれている
             div[a] += 1
     return div
+
+print(div_count(5))

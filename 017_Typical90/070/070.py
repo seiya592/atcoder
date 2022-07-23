@@ -13,3 +13,22 @@ sys.setrecursionlimit(500000)
 INF = 10**10
 
 
+N = II()
+X = []
+Y = []
+for _ in range(N):
+    x,y = IIS()
+    X.append(x)
+    Y.append(y)
+
+X.sort()
+Y.sort()
+
+a = X[N//2]
+b = Y[N//2]
+
+ans = 0
+for x, y in zip(X, Y):
+    ans += abs(x-a) + abs(y-b)
+
+print(ans)

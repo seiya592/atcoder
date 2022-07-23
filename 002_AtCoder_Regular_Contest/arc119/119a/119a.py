@@ -13,3 +13,13 @@ sys.setrecursionlimit(500000)
 INF = 10**10
 
 
+N = II()
+i = 0
+ans = INF * 10**10
+while 2**i <= N:
+    b = 2**i
+    a = N // b
+    c = N % b
+    ans = min(ans, a+i+c)
+    i+=1
+print(ans)

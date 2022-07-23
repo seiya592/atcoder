@@ -13,3 +13,21 @@ sys.setrecursionlimit(500000)
 INF = 10**10
 
 
+N, Q = IIS()
+A = LIIS()
+now = 0
+
+for _ in range(Q):
+    t,x,y = IIS()
+    x -= 1
+    y -= 1
+
+    if t == 1:
+        A[(x+now)%N], A[(y+now)%N] = A[(y+now)%N], A[(x+now)%N]
+    elif t == 2:
+        if now:
+            now -= 1
+        else:
+            now = N-1
+    else:
+        print(A[(x+now)%N])
