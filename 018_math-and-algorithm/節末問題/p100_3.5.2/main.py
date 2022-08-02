@@ -16,28 +16,18 @@ sys.setrecursionlimit(500000)
 INF = 10**10
 
 
-N = II()
-x,y = IIS()
-x2,y2 = IIS()
+import random
 
+ans = 0
+total = 1000000
+for _ in range(total):
+    x = random.uniform(0, 6)
+    y = random.uniform(0, 9)
 
-
-# 対角線の半分の長さを求める
-r = math.sqrt((x-x2) ** 2 + (y-y2) ** 2) / 2
-
-# 中心のx,y座標
-d0 = math.atan2((y2-y), (x2-x))
-xc = math.cos(d0) * r + x
-yc = math.sin(d0) * r + y
-
-# 角度を求める
-# 中心から見たp0の角度を求める
-p0d = math.atan2(y-yc,x-xc)
-# p0からp1の角度
-d = 2 * math.pi / N
-
-p1d = p0d + d
-
-ansx = math.cos(p1d) * r + xc
-ansy = math.sin(p1d) * r + yc
-print(ansx,ansy)
+    if math.sqrt((3-x)**2 + (7-y)**2) <= 2.0:
+        # (3,7) 半径2 の円
+        ans += 1
+    elif math.sqrt((3-x)**2 + (3-y)**2) <= 3.0:
+        # (3.3) 半径3 の円
+        ans += 1
+print(ans)
