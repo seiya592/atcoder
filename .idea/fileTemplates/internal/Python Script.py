@@ -1,3 +1,6 @@
+"""
+${DATE} ${TIME}:${SECOND}
+"""
 def I(): return input().rstrip()
 def IS(): return input().split()
 def II(): return int(input())
@@ -10,6 +13,6 @@ def YES(): print('Yes'), exit()
 def NO(): print('No'), exit()
 import sys
 sys.setrecursionlimit(500000)
-INF = 10**10
+INF = 10**17
 
 

@@ -13,11 +13,13 @@ sys.setrecursionlimit(500000)
 INF = 10**10
 
 
-A = (5,6)
-B = (5,4)
-if A < B:
-    print('B')
-elif A > B:
-    print('A')
-else:
-    print('AB')
+print(-7//2)
+
+# A = (5,6)
+# B = (5,4)
+# if A < B:
+#     print('B')
+# elif A > B:
+#     print('A')
+# else:
+#     print('AB')

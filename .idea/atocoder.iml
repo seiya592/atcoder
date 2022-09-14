@@ -6,7 +6,7 @@
       <excludeFolder url="file://$MODULE_DIR$/venv_pypy" />
       <excludeFolder url="file://$MODULE_DIR$/venv38" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.10 (atocoder)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.8 (atocoder)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>
