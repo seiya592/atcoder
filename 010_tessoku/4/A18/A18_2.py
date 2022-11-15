@@ -1,5 +1,5 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/10/17 19:28:57
 """
 def I(): return input().rstrip()
 def IS(): return input().split()
@@ -17,3 +17,19 @@ sys.setrecursionlimit(500000)
 INF = 10**17
 
 
+#ふつうにDPでやる
+
+N,S = IIS()
+A = LIIS()
+dp = [[0] * (S+1) for _ in range(N+1)]
+dp[0][0] = 1
+
+# もらう
+for n in range(1,N+1):
+    for i in range(S+1):
+        dp[n][i] += dp[n-1][i]
+        if i - A[n-1] >= 0:
+            dp[n][i] += dp[n-1][i-A[n-1]]
+if dp[-1][-1]:
+    YES()
+NO()

@@ -1,5 +1,5 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/09/24 20:50:58
 """
 def I(): return input().rstrip()
 def IS(): return input().split()
@@ -17,3 +17,32 @@ sys.setrecursionlimit(500000)
 INF = 10**17
 
 
+N,X,Y = IIS()
+E = [[] for _ in range(N+1)]
+for _ in range(N-1):
+    u,v = IIS()
+    E[u].append(v)
+    E[v].append(u)
+
+ans = [0] * (N+1)    #経路を保存
+p = 0
+def dfs(n,o):
+    global p
+    global ans
+    ans[p] = n
+    p += 1
+
+    if n == Y:
+        ans.append(n)
+        print(*ans[:p])
+        exit()
+
+    for e in E[n]:
+        if e == o:
+            continue
+        dfs(e,n)
+
+    p -= 1
+
+
+dfs(X,0)

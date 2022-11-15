@@ -1,5 +1,6 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/09/28 22:25:48
+https://atcoder.jp/contests/code-festival-2015-morning-middle/tasks/cf_2015_morning_hard_a
 """
 def I(): return input().rstrip()
 def IS(): return input().split()
@@ -17,3 +18,23 @@ sys.setrecursionlimit(500000)
 INF = 10**17
 
 
+N = II()
+A = LIIS()
+
+ans = 0
+
+l = 0
+r = N-1
+
+l_s = A[l]
+r_s = A[r]
+while l != r:
+    if l_s > r_s:
+        ans += (r_s*2) + A[r-1] + 1
+        r_s += A[r-1] + A[r-2] + 2
+        r -= 2
+    else:
+        ans += (l_s * 2) + A[l + 1] + 1
+        l_s += A[l + 1] + A[l + 2] + 2
+        l += 2
+print(ans)

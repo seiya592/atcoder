@@ -1,5 +1,5 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/10/17 20:06:36
 """
 def I(): return input().rstrip()
 def IS(): return input().split()
@@ -17,3 +17,22 @@ sys.setrecursionlimit(500000)
 INF = 10**17
 
 
+N, W = IIS()
+WV = LLIIS(N)
+MAX_V = 1000 * N
+dp = [[INF] * (MAX_V + 1) for _ in range(N+1)]
+dp[0][0] = 0
+
+#配る
+for n in range(N):
+    w,v = WV[n]
+    for i in range(MAX_V+1):
+        dp[n+1][i] = min(dp[n][i], dp[n+1][i])
+        if i+v <= MAX_V:
+            dp[n+1][i+v] = min(dp[n+1][i+v], dp[n][i] + w)
+
+ans = 0
+for v in range(MAX_V+1):
+    if dp[N][v] <= W:
+        ans = v
+print(ans)

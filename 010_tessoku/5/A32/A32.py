@@ -1,5 +1,5 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/11/14 20:17:32
 """
 def I(): return input().rstrip()
 def IS(): return input().split()
@@ -17,3 +17,11 @@ sys.setrecursionlimit(500000)
 INF = 10**17
 
 
+N,A,B = IIS()
+dp = [0] * (N+1+A+B)
+# dp[残りの石がi個のターンを持ったプレイヤーは] = 0→負け 1→勝ち
+
+for i in range(N):
+    dp[i+A] |= ~dp[i]
+    dp[i+B] |= ~dp[i]
+print('First' if dp[N] else 'Second')

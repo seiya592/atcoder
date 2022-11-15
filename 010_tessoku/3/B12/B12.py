@@ -1,5 +1,5 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/10/13 18:52:40
 """
 def I(): return input().rstrip()
 def IS(): return input().split()
@@ -17,3 +17,18 @@ sys.setrecursionlimit(500000)
 INF = 10**17
 
 
+N = II()
+
+ok = 0
+ng = INF
+
+def calc(n):
+    return n ** 3 + n <= N
+
+while abs(ok-ng) > 0.001:
+    mid = (ok+ng)/2
+    if calc(mid):
+        ok = mid
+    else:
+        ng = mid
+print(ok)

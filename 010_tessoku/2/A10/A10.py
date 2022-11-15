@@ -1,5 +1,5 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/10/12 23:39:58
 """
 def I(): return input().rstrip()
 def IS(): return input().split()
@@ -17,3 +17,15 @@ sys.setrecursionlimit(500000)
 INF = 10**17
 
 
+N = II()
+A = LIIS()
+
+S = [0]
+S_r = [0]
+for a,a_r in zip(A,reversed(A)):
+    S.append(max(S[-1], a))
+    S_r.append(max(S_r[-1], a_r))
+S_r = list(reversed(S_r))
+for _ in range(II()):
+    l,r = IIS()
+    print(max(S[l-1], S_r[r]))

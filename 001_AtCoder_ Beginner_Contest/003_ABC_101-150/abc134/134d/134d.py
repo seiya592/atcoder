@@ -1,5 +1,5 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/11/15 19:46:19
 """
 def I(): return input().rstrip()
 def IS(): return input().split()
@@ -17,3 +17,17 @@ sys.setrecursionlimit(500000)
 INF = 10**17
 
 
+N = II()
+A = LIIS()
+ans = []
+num = [0] * (N+1)
+for i in reversed(range(1,N+1)):
+    t = 0
+    for j in range(i,N+1,i):
+        t ^= num[j-1]
+    if t != A[i-1]:
+        num[i-1] = 1
+        ans.append(i)
+print(len(ans))
+if ans:
+    print(*ans)

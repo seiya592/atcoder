@@ -1,5 +1,5 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/10/26 18:53:18
 """
 def I(): return input().rstrip()
 def IS(): return input().split()
@@ -16,4 +16,18 @@ import sys
 sys.setrecursionlimit(500000)
 INF = 10**17
 
+ans = 0
+for _ in range(II()):
+    t,a = IS()
+    a = int(a)
 
+    if t == '+':
+        ans += a
+    elif t == '-':
+        ans -= a
+    else:
+        ans *= a
+    ans %= 10000
+    print(ans)
+
+print(-10%100)

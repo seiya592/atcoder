@@ -1,5 +1,5 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/10/12 22:05:36
 """
 def I(): return input().rstrip()
 def IS(): return input().split()
@@ -17,3 +17,18 @@ sys.setrecursionlimit(500000)
 INF = 10**17
 
 
+N = II()
+A = LIIS()
+
+S = [0]
+for a in A:
+    S.append(S[-1] + a)
+
+for _ in range(II()):
+    l,r = IIS()
+    if S[r] - S[l-1] > (r-l+1) - (S[r] - S[l-1]):
+        print('win')
+    elif S[r] - S[l-1] < (r-l+1) - (S[r] - S[l-1]):
+        print('lose')
+    else:
+        print('draw')

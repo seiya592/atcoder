@@ -1,5 +1,5 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/10/21 19:10:10
 """
 def I(): return input().rstrip()
 def IS(): return input().split()
@@ -17,3 +17,21 @@ sys.setrecursionlimit(500000)
 INF = 10**17
 
 
+N, M = IIS()
+A = LLIIS(M)
+Q = []
+for a_ in A:
+    now = 1
+    s = 0
+    for a in reversed(a_):
+        s += now * a
+        now *= 2
+    Q.append(s)
+
+ALL = 2 ** N
+dp = [INF] * ALL
+dp[0] = 0
+for n in range(ALL):
+    for q in Q:
+        dp[n|q] = min(dp[n|q], dp[n] + 1)
+print(dp[-1] if dp[-1] != INF else -1)

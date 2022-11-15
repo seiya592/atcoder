@@ -1,5 +1,5 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/11/05 20:57:24
 """
 def I(): return input().rstrip()
 def IS(): return input().split()
@@ -17,3 +17,13 @@ sys.setrecursionlimit(500000)
 INF = 10**17
 
 
+N,M = IIS()
+E = [[] for _ in range(N+1)]
+
+for _ in range(M):
+    a,b = IIS()
+    E[a].append(b)
+    E[b].append(a)
+
+for i in range(1,N+1):
+    print(len(E[i]),*sorted(E[i]))

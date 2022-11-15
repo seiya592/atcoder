@@ -1,5 +1,5 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/10/15 23:44:56
 """
 def I(): return input().rstrip()
 def IS(): return input().split()
@@ -17,3 +17,12 @@ sys.setrecursionlimit(500000)
 INF = 10**17
 
 
+X, K = IIS()
+
+for k in range(1,K+1):
+    t = X % (10**k) // (10**(k-1))
+    if t >= 5:
+        X = (X // (10**k) + 1) * (10 ** k)
+    else:
+        X = (X // (10**k)) * (10 ** k)
+print(X)

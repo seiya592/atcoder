@@ -1,5 +1,5 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/10/12 22:44:48
 """
 def I(): return input().rstrip()
 def IS(): return input().split()
@@ -17,3 +17,14 @@ sys.setrecursionlimit(500000)
 INF = 10**17
 
 
+H,W = IIS()
+X = LLIIS(H)
+S = [[0] * (W+1) for _ in range(H+1)]
+
+for i,x_r in enumerate(X,start=1):
+    for j,x in enumerate(x_r,start=1):
+        S[i][j] += S[i-1][j] + S[i][j-1] + x - S[i-1][j-1]
+
+for _ in range(II()):
+    a,b,c,d = IIS()
+    print(S[c][d] - S[a-1][d] - S[c][b-1] + S[a-1][b-1])

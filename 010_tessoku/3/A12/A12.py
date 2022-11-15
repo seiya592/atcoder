@@ -1,5 +1,5 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/10/13 18:46:12
 """
 def I(): return input().rstrip()
 def IS(): return input().split()
@@ -17,3 +17,23 @@ sys.setrecursionlimit(500000)
 INF = 10**17
 
 
+N, K = IIS()
+A = LIIS()
+
+ok = INF
+ng = 0
+
+def calc(n):
+    # n秒あれば何枚印刷できるか
+    ans = 0
+    for a in A:
+        ans += n // a
+    return ans >= K
+
+while abs(ok-ng) > 1:
+    mid = (ok+ng)//2
+    if calc(mid):
+        ok = mid
+    else:
+        ng = mid
+print(ok)

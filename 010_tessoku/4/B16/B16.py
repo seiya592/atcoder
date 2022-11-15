@@ -1,5 +1,5 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/10/14 19:05:56
 """
 def I(): return input().rstrip()
 def IS(): return input().split()
@@ -17,3 +17,12 @@ sys.setrecursionlimit(500000)
 INF = 10**17
 
 
+N = II()
+H = LIIS() + [0,0,0]
+
+dp = [INF] * (N+4)
+dp[0] = 0
+for n in range(N):
+    dp[n+1] = min(dp[n] + abs(H[n] - H[n+1]),dp[n+1])
+    dp[n+2] = min(dp[n] + abs(H[n] - H[n+2]),dp[n+2])
+print(dp[N-1])

@@ -1,5 +1,5 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/10/14 18:59:05
 """
 def I(): return input().rstrip()
 def IS(): return input().split()
@@ -17,3 +17,13 @@ sys.setrecursionlimit(500000)
 INF = 10**17
 
 
+N = II()
+A = LIIS()
+B = LIIS()
+
+dp = [INF] * N
+dp[0] = 0
+dp[1] = A[0]
+for n in range(2,N):
+    dp[n] = min(dp[n-1] + A[n-1], dp[n-2] + B[n-2])
+print(dp[-1])

@@ -1,5 +1,5 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/10/17 19:35:13
 """
 def I(): return input().rstrip()
 def IS(): return input().split()
@@ -17,3 +17,30 @@ sys.setrecursionlimit(500000)
 INF = 10**17
 
 
+N,S = IIS()
+A = LIIS()
+
+dp = [[0] * ((10000+1)*2) for _ in range(N+1)]
+dp[0][0] = 1
+
+# 配る
+for n in range(N):
+    for i in range(S+1):
+        dp[n+1][i] += dp[n][i]
+        dp[n+1][i+A[n]] += dp[n][i]
+
+#ないばあい
+if not dp[N][S]:
+    print(-1)
+    exit()
+
+#復元
+ans = []
+now = S
+for n in range(N-1,-1,-1):
+    if now - A[n] >= 0 and dp[n][now-A[n]]:
+        now -= A[n]
+        ans.append(n+1)
+
+print(len(ans))
+print(*reversed(ans))

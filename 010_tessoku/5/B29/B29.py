@@ -1,5 +1,5 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/11/14 19:38:13
 """
 def I(): return input().rstrip()
 def IS(): return input().split()
@@ -15,5 +15,32 @@ def CEIL(x,y): return -(-x // y)    # 除算を小数点切り上げ
 import sys
 sys.setrecursionlimit(500000)
 INF = 10**17
+import math
+
+A,B = IIS()
+T = [A]
+a = A
+K = math.floor(math.log2(B)) + 1
+
+def has_bit(n, i) -> bool:
+    """
+    nで表現される集合に要素iが含まれているかを判定
+    :param int n: 集合
+    :param int i: 要素
+    :return:bool True→含まれている False→含まれていない
+    """
+    return (n & (1 << i)) > 0
 
 
+for i in range(K):
+    a *= a
+    a %= 10**9 + 7
+    T.append(a)
+
+ans = 1
+
+for k in range(K):
+    if has_bit(B,k):
+        ans *= T[k]
+        ans %= 10**9+7
+print(ans)

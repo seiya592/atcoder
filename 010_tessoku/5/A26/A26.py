@@ -1,5 +1,5 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/10/26 18:30:34
 """
 def I(): return input().rstrip()
 def IS(): return input().split()
@@ -16,4 +16,19 @@ import sys
 sys.setrecursionlimit(500000)
 INF = 10**17
 
+ALL = (10 **5) * 3
+A = [0] * (ALL+1)
 
+for i in range(2,ALL+1):
+    if A[i]:
+        continue
+    j = 2
+    while i*j <= ALL:
+        A[i*j] = 1
+        j += 1
+
+for _ in range(II()):
+    if A[II()]:
+        print('No')
+    else:
+        print('Yes')

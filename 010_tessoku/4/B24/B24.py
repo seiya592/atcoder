@@ -1,6 +1,9 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/10/24 19:22:58
 """
+import bisect
+
+
 def I(): return input().rstrip()
 def IS(): return input().split()
 def II(): return int(input())
@@ -17,3 +20,13 @@ sys.setrecursionlimit(500000)
 INF = 10**17
 
 
+N = II()
+XY = LLIIS(N)
+
+XY.sort(key=lambda x:(x[0],-x[1]))
+
+dp = [INF] * N
+
+for _,y in XY:
+    dp[bisect.bisect_left(dp,y)] = y
+print(bisect.bisect_left(dp,INF))

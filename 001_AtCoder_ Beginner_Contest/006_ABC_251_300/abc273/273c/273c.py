@@ -1,6 +1,9 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/10/15 20:52:44
 """
+import bisect
+
+
 def I(): return input().rstrip()
 def IS(): return input().split()
 def II(): return int(input())
@@ -17,3 +20,15 @@ sys.setrecursionlimit(500000)
 INF = 10**17
 
 
+N = II()
+A = LIIS()
+B = sorted(set(A))
+M = len(B)
+S = []
+for a in A:
+    S.append(M - bisect.bisect_right(B,a))
+ans = [0]*(N)
+for s in S:
+    ans[s] += 1
+for a in ans:
+    print(a)

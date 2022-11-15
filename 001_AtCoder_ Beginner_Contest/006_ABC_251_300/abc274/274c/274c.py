@@ -1,5 +1,5 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/10/22 20:58:13
 """
 def I(): return input().rstrip()
 def IS(): return input().split()
@@ -17,3 +17,22 @@ sys.setrecursionlimit(500000)
 INF = 10**17
 
 
+N = II()
+A = LIIS()
+
+E = [[] for _ in range(N*2+1+1)]
+
+for i, a in enumerate(A,start=1):
+    E[a].append(i*2)
+    E[a].append(i*2+1)
+
+ans = [-INF] * (2*N+1+1)
+def dfs(n,d):
+    ans[n] = d
+
+    for e in E[n]:
+        if ans[n] != -INF:
+            dfs(e, d+1)
+dfs(1,0)
+for a in ans[1:]:
+    print(a)

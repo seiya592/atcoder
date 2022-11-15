@@ -1,5 +1,5 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/10/01 20:39:25
 """
 def I(): return input().rstrip()
 def IS(): return input().split()

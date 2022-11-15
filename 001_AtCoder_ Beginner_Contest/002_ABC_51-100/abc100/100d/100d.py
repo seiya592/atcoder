@@ -1,6 +1,9 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/10/31 19:00:35
 """
+import heapq
+
+
 def I(): return input().rstrip()
 def IS(): return input().split()
 def II(): return int(input())
@@ -17,3 +20,24 @@ sys.setrecursionlimit(500000)
 INF = 10**17
 
 
+N,M = IIS()
+XYZ = LLIIS(N)
+
+def calc(a,b,c):
+    ans = 0
+    Q = []
+    heapq.heapify(Q)
+    for x,y,z in XYZ:
+        heapq.heappush(Q,-(a*x+b*y+c*z))
+    now = M
+    while now:
+        ans += heapq.heappop(Q)
+        now -= 1
+    return -ans
+
+ans = -INF
+for a in [-1,1]:
+    for b in [-1,1]:
+        for c in [-1,1]:
+            ans = max(ans, calc(a,b,c))
+print(ans)

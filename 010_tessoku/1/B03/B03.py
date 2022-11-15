@@ -1,5 +1,5 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/10/10 12:55:54
 """
 def I(): return input().rstrip()
 def IS(): return input().split()
@@ -17,3 +17,12 @@ sys.setrecursionlimit(500000)
 INF = 10**17
 
 
+N = II()
+A = LIIS()
+
+for i,a in enumerate(A):
+    for j,b in enumerate(A):
+        for k,c in enumerate(A):
+            if i != j and j != k and k != i and a+b+c == 1000:
+                YES()
+NO()

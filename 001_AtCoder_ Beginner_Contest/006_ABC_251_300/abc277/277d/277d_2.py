@@ -1,5 +1,5 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/11/13 13:45:21
 """
 def I(): return input().rstrip()
 def IS(): return input().split()
@@ -17,3 +17,29 @@ sys.setrecursionlimit(500000)
 INF = 10**17
 
 
+N,M = IIS()
+A = LIIS()
+
+A.sort()
+A_sum = sum(A)
+ans = []
+
+
+old = -INF
+tot = 0
+i = 0
+while i < N:
+    if old == A[i] or old + 1 == A[i]:
+        tot += A[i]
+    else:
+        ans.append(tot)
+        tot = A[i]
+    old = A[i]
+    i += 1
+else:
+    ans.append(tot)
+
+if A[0] == 0 and A[-1] == M-1 and len(ans) > 2:
+    ans.append(ans[1]+ans[-1])
+
+print(A_sum-max(ans))

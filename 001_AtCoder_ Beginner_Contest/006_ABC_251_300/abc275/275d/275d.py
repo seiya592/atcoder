@@ -1,5 +1,5 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/10/29 20:52:05
 """
 def I(): return input().rstrip()
 def IS(): return input().split()
@@ -17,3 +17,15 @@ sys.setrecursionlimit(500000)
 INF = 10**17
 
 
+N = II()
+
+from functools import lru_cache
+
+@lru_cache(maxsize=1000)
+def calc(n):
+    if n == 0:
+        return 1
+
+    return calc(n//2) + calc(n//3)
+
+print(calc(N))

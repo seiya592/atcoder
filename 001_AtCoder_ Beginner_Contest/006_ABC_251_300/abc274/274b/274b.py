@@ -1,5 +1,5 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/10/22 20:58:09
 """
 def I(): return input().rstrip()
 def IS(): return input().split()
@@ -17,3 +17,13 @@ sys.setrecursionlimit(500000)
 INF = 10**17
 
 
+H, W = IIS()
+C = LI(H)
+ans = []
+for j in range(W):
+    cnt = 0
+    for i in range(H):
+        if C[i][j] == '#':
+            cnt += 1
+    ans.append(cnt)
+print(*ans)

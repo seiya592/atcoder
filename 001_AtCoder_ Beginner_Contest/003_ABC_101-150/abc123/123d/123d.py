@@ -1,5 +1,5 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/09/26 17:27:07
 """
 def I(): return input().rstrip()
 def IS(): return input().split()
@@ -17,3 +17,20 @@ sys.setrecursionlimit(500000)
 INF = 10**17
 
 
+X,Y,Z,K = IIS()
+A = LIIS()
+B = LIIS()
+C = LIIS()
+
+T = [a + b for b in B for a in A]
+
+if X*Y > K:
+    T.sort(reverse=True)
+    T = T[:K]
+
+ans = [t+c for t in T for c in C]
+
+ans.sort(reverse=True)
+
+for a in ans[:K]:
+    print(a)

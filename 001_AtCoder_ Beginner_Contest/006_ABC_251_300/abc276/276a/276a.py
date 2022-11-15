@@ -1,5 +1,5 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/11/05 20:57:20
 """
 def I(): return input().rstrip()
 def IS(): return input().split()
@@ -17,3 +17,9 @@ sys.setrecursionlimit(500000)
 INF = 10**17
 
 
+S = I()
+ans = -1
+for i in range(len(S)):
+    if S[i] == 'a':
+        ans = i+1
+print(ans)

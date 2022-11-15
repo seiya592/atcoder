@@ -1,5 +1,5 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/10/18 17:25:46
 """
 def I(): return input().rstrip()
 def IS(): return input().split()
@@ -17,3 +17,16 @@ sys.setrecursionlimit(500000)
 INF = 10**17
 
 
+S = I()
+T = I()
+S_s = len(S)
+T_s = len(T)
+dp = [[0] * (T_s+1) for _ in range(S_s+1)]
+
+for i in range(1,S_s+1):
+    for j in range(1,T_s+1):
+        if S[i-1] == T[j-1]:
+            dp[i][j] = max(dp[i-1][j-1]+1, dp[i-1][j], dp[i][j-1])
+        else:
+            dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])
+print(dp[-1][-1])

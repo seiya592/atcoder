@@ -1,5 +1,5 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/10/13 19:44:38
 """
 def I(): return input().rstrip()
 def IS(): return input().split()
@@ -17,3 +17,15 @@ sys.setrecursionlimit(500000)
 INF = 10**17
 
 
+def COMPRESS(arr): return {e: i for i, e in enumerate(sorted(set(arr)), start=1)}
+# 一次元リスト座標復元用
+def UNCOMPRESS(arr): return {i: e for i, e in enumerate(sorted(set(arr)))}
+
+N = II()
+A = LIIS()
+
+C = COMPRESS(A)
+ans = []
+for a in A:
+    ans.append(C[a])
+print(*ans)

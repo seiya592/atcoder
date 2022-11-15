@@ -1,5 +1,5 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/10/22 20:58:04
 """
 def I(): return input().rstrip()
 def IS(): return input().split()
@@ -17,3 +17,5 @@ sys.setrecursionlimit(500000)
 INF = 10**17
 
 
+A,B = IIS()
+print(format(B / A,'.3f'))

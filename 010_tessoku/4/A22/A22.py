@@ -1,5 +1,5 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/10/19 19:49:38
 """
 def I(): return input().rstrip()
 def IS(): return input().split()
@@ -16,4 +16,21 @@ import sys
 sys.setrecursionlimit(500000)
 INF = 10**17
 
+"""
+初期化していない場合のhackケース
+7
+7 3 4 5 6 7
+7 4 5 6 6 7
+"""
 
+N = II()
+A = [0] + LIIS()
+B = [0] + LIIS()
+
+dp = [-INF] * (N+1)
+dp[1] = 0
+for i in range(1,N):
+    dp[A[i]] = max(dp[i] + 100, dp[A[i]])
+    dp[B[i]] = max(dp[i] + 150, dp[B[i]])
+
+print(dp[-1])

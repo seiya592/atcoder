@@ -1,6 +1,9 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/11/14 19:26:00
 """
+import math
+
+
 def I(): return input().rstrip()
 def IS(): return input().split()
 def II(): return int(input())
@@ -17,3 +20,6 @@ sys.setrecursionlimit(500000)
 INF = 10**17
 
 
+A,B = IIS()
+
+print(pow(A,B,10**9+7))
