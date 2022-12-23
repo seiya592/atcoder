@@ -1,5 +1,5 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/11/25 22:04:22
 """
 def I(): return input().rstrip()
 def IS(): return input().split()
@@ -13,9 +13,33 @@ def YES(): print('Yes'), exit()
 def NO(): print('No'), exit()
 def CEIL(x,y): return -(-x // y)    # 除算を小数点切り上げ
 import sys
-#import pypyjit
-#pypyjit.set_param('max_unroll_recursion=-1')        
 sys.setrecursionlimit(500000)
 INF = 10**17
 
 
+N = II()
+E = [[] for _ in range(N+1)]
+
+for i in range(N-1):
+    a,b = IIS()
+    E[a].append((b,i))
+    E[b].append((a,i))
+
+ans = [0] * (N-1)
+
+def dfs(n,o,o_c):
+
+    color = 1
+    for e,i in E[n]:
+        if e == o:
+            continue
+        if color == o_c:
+            color += 1
+        ans[i] = color
+        dfs(e,n,color)
+        color += 1
+
+dfs(1,0,0)
+print(max(ans))
+for a in ans:
+    print(a)

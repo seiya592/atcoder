@@ -1,5 +1,5 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/12/08 22:31:00
 """
 def I(): return input().rstrip()
 def IS(): return input().split()
@@ -13,9 +13,21 @@ def YES(): print('Yes'), exit()
 def NO(): print('No'), exit()
 def CEIL(x,y): return -(-x // y)    # 除算を小数点切り上げ
 import sys
-#import pypyjit
-#pypyjit.set_param('max_unroll_recursion=-1')        
 sys.setrecursionlimit(500000)
 INF = 10**17
 
+D = [0,1,3,6,10,15,21,28,36,45]
 
+N = II()
+digit = 0
+ans = 0
+done = 0
+while N:
+    n = N % 10
+    N = N // 10
+
+    ans += 45 * N * (10 ** digit) + D[max(n-1,0)] * (10 ** digit) + n * (done + 1)
+
+    done += n * 10 ** digit
+    digit += 1
+print(ans)

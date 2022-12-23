@@ -1,5 +1,5 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/12/10 20:45:45
 """
 def I(): return input().rstrip()
 def IS(): return input().split()
@@ -19,3 +19,17 @@ sys.setrecursionlimit(500000)
 INF = 10**17
 
 
+N,T = IIS()
+A = LIIS()
+
+Asum = sum(A)
+
+T = T % Asum
+
+
+for i,a in enumerate(A,start=1):
+    if T - a < 0:
+        print(i,T)
+        exit()
+    else:
+        T -= a

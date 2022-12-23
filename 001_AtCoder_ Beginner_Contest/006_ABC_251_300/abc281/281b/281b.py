@@ -1,5 +1,5 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/12/10 20:45:34
 """
 def I(): return input().rstrip()
 def IS(): return input().split()
@@ -19,3 +19,16 @@ sys.setrecursionlimit(500000)
 INF = 10**17
 
 
+S = I()
+if len(S) != 8:
+    NO()
+
+if not S[0].isupper():
+    NO()
+
+if not S[-1].isupper():
+    NO()
+
+if S[1:-1].isdigit() and 100000<=int(S[1:-1])<= 999999:
+    YES()
+NO()

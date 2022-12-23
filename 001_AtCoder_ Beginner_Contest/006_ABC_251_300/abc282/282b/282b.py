@@ -1,5 +1,5 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/12/17 22:01:03
 """
 def I(): return input().rstrip()
 def IS(): return input().split()
@@ -19,3 +19,19 @@ sys.setrecursionlimit(500000)
 INF = 10**17
 
 
+N,M = IIS()
+S = []
+
+for _ in range(N):
+    s = I()
+    t = 0
+    for ss in s:
+        t = (t << 1) | (1 if ss == 'o' else 0)
+    S.append(t)
+
+ans = 0
+for i in range(N):
+    for j in range(i+1, N):
+        if S[i] | S[j] == (1 << M) - 1:
+            ans += 1
+print(ans)

@@ -24,5 +24,5 @@ dp = [0] * (N+1+max(A))
 
 for i in range(N):
     for a in A:
-        dp[i+a] |= ~dp[i]
+        dp[i+a] |= 1^dp[i]
 print('First' if dp[N] else 'Second')

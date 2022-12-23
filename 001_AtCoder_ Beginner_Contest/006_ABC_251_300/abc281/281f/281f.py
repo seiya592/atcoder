@@ -1,5 +1,5 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/12/10 20:46:28
 """
 def I(): return input().rstrip()
 def IS(): return input().split()
@@ -19,3 +19,9 @@ sys.setrecursionlimit(500000)
 INF = 10**17
 
 
+N = II()
+A = LIIS()
+
+# dp[n桁目を見て][1or0だった時の]=その他の値を考慮した最大値
+
+dp = [[0]]

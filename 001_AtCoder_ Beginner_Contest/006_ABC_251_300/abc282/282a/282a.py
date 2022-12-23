@@ -1,6 +1,9 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/12/17 22:00:21
 """
+import string
+
+
 def I(): return input().rstrip()
 def IS(): return input().split()
 def II(): return int(input())
@@ -19,3 +22,4 @@ sys.setrecursionlimit(500000)
 INF = 10**17
 
 
+print(string.ascii_uppercase[:II()])

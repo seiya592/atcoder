@@ -1,5 +1,5 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/12/10 11:43:23
 """
 def I(): return input().rstrip()
 def IS(): return input().split()
@@ -13,9 +13,21 @@ def YES(): print('Yes'), exit()
 def NO(): print('No'), exit()
 def CEIL(x,y): return -(-x // y)    # 除算を小数点切り上げ
 import sys
-#import pypyjit
-#pypyjit.set_param('max_unroll_recursion=-1')        
 sys.setrecursionlimit(500000)
 INF = 10**17
 
 
+N,X = IIS()
+AB = LLIIS(N)
+
+dp = [[0]*(10000*2+1) for _ in range(N+1)]
+dp[0][0] = 1
+
+#配る
+for n in range(N):
+    for i in range(X):
+        dp[n+1][i+AB[n][0]] += dp[n][i]
+        dp[n + 1][i + AB[n][1]] += dp[n][i]
+if dp[N][X]:
+    YES()
+NO()

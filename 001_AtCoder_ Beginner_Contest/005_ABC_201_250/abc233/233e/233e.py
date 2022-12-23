@@ -1,5 +1,5 @@
 """
-${DATE} ${TIME}:${SECOND}
+2022/11/16 19:07:04
 """
 def I(): return input().rstrip()
 def IS(): return input().split()
@@ -13,9 +13,23 @@ def YES(): print('Yes'), exit()
 def NO(): print('No'), exit()
 def CEIL(x,y): return -(-x // y)    # 除算を小数点切り上げ
 import sys
-#import pypyjit
-#pypyjit.set_param('max_unroll_recursion=-1')        
 sys.setrecursionlimit(500000)
 INF = 10**17
 
 
+X = I()
+ans = []
+# 全ての桁を足す
+tot = 0
+for x in X:
+    tot += int(x)
+
+kuriage = 0
+for x in reversed(X):
+    ans.append(str((tot+kuriage)%10))
+    kuriage = (tot+kuriage)//10
+    tot -= int(x)
+else:
+    if kuriage:
+        ans.append(str(kuriage))
+print(''.join(reversed(ans)))
